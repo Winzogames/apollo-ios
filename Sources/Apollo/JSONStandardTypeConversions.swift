@@ -129,8 +129,6 @@ extension Dictionary: JSONEncodable {
     for (key, value) in self {
       if case let (key as String, value as JSONEncodable) = (key, value) {
         jsonObject[key] = value.jsonValue
-      } else {
-        fatalError("Dictionary is only JSONEncodable if Value is (and if Key is String)")
       }
     }
     return jsonObject
@@ -142,7 +140,6 @@ extension Dictionary: JSONDecodable {
         guard let dictionary = value as? Dictionary else {
             throw JSONDecodingError.couldNotConvert(value: value, to: Dictionary.self)
         }
-        
         self = dictionary
     }
 }

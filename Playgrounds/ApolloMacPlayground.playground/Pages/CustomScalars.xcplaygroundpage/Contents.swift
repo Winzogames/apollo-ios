@@ -190,7 +190,7 @@ Next, we'll turn that response into a result and try to get the date that was pa
 let result = try! response.parseResultFast()
 
 guard let parsedDate = result.data?.whatTimeIsIt?.date else {
-    fatalError("date did not parse correctly!")
+    
 }
 
 /*:

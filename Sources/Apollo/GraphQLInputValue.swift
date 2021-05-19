@@ -55,8 +55,6 @@ extension Dictionary {
         if !(evaluatedValue is NSNull) {
           jsonObject[key] = evaluatedValue
         }
-      } else {
-        fatalError("Dictionary is only GraphQLInputValue if Value is (and if Key is String)")
       }
     }
     return jsonObject
@@ -76,8 +74,6 @@ extension Array {
     for (value) in self {
       if case let (value as GraphQLInputValue) = value {
         jsonArray.append(try value.evaluate(with: variables))
-      } else {
-        fatalError("Array is only GraphQLInputValue if Element is")
       }
     }
     return jsonArray
